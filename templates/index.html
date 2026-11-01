@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#06140e" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Class Schedule</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+</head>
+<body>
+  <div class="app">
+    <!-- Top bar with live clock -->
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="3"></rect>
+            <path d="M8 2v4M16 2v4M3 10h18"></path>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Class Schedule</h1>
+          <p id="classLabel">—</p>
+        </div>
+      </div>
+
+      <div class="clock" aria-live="polite">
+        <div class="clock-time" id="clockTime">00:00:00</div>
+        <div class="clock-date" id="clockDate">—</div>
+      </div>
+    </header>
+
+    <section class="push-controls" style="padding: 12px 0;">
+      <button id="enablePushButton" type="button">Увімкнути сповіщення</button>
+      <p id="pushStatus" role="status" aria-live="polite"></p>
+    </section>
+
+    <!-- Day switcher -->
+    <nav class="day-tabs" id="dayTabs" aria-label="Days of the week"></nav>
+
+    <!-- Bell schedule (all lesson times) -->
+    <section class="bells" aria-labelledby="bellsTitle">
+      <div class="bells-head">
+        <h3 id="bellsTitle">Bell Schedule</h3>
+        <span class="bells-hint" id="bellsHint">All lessons</span>
+      </div>
+      <ol class="bell-list" id="bellList"></ol>
+    </section>
+
+    <!-- Content -->
+    <main class="content">
+      <div class="content-head">
+        <h2 id="dayTitle">—</h2>
+        <span class="lesson-count" id="lessonCount"></span>
+      </div>
+
+      <div id="status" class="status" role="status"></div>
+
+      <ul class="lesson-list" id="lessonList" aria-live="polite"></ul>
+    </main>
+
+    <footer class="footer">
+      <span>Tap a day to view its schedule</span>
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/push.js') }}"></script>
+</body>
+</html>
+

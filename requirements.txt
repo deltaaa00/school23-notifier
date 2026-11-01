@@ -1,0 +1,5 @@
+Flask
+schedule
+requests
+pywebpush
+cryptography
