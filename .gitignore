@@ -3,3 +3,5 @@ data/
 docs/
 vapid_private.pem
 push_subscriptions.db
+*.env
+__pycache__/
